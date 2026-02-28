@@ -136,6 +136,43 @@ def add() -> str:
 
     return render_template("add.html")
 
+@app.route("/update/<int:post_id>", methods=["GET", "POST"])
+def update(post_id: int):
+    """
+    Update an existing blog post by id.
+
+    GET: display a pre-filled update form.
+    POST: save the updated post back to the JSON file.
+
+    Args:
+        post_id: The numeric id of the post to update.
+
+    Returns:
+        Rendered HTML for GET, or a redirect to the homepage after POST.
+    """
+    posts = load_posts()
+    post = next((p for p in posts if p.get("id") == post_id), None)
+
+    if post is None:
+        abort(404)
+
+    if request.method == "POST":
+        title = request.form.get("title", "").strip()
+        content = request.form.get("content", "").strip()
+        author = request.form.get("author", "").strip()
+
+        if not title or not content:
+            return render_template("update.html", post=post)
+
+        post["title"] = title
+        post["content"] = content
+        post["author"] = author
+
+        save_posts(posts)
+        return redirect(url_for("index"))
+
+    return render_template("update.html", post=post)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
