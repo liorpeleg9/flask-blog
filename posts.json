@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "My first post",
+    "content": "Hello from my Flask blog!",
+    "author": "Lior"
+  },
+  {
+    "id": 2,
+    "title": "Second post",
+    "content": "This blog is powered by Flask and JSON.",
+    "author": "Lior"
+  },
+  {
+    "id": 3,
+    "title": "Test post",
+    "content": "tessssst",
+    "author": "Lior"
+  },
+  {
+    "id": 4,
+    "title": "second-test",
+    "content": "2nd",
+    "author": "Lior"
+  },
+  {
+    "id": 5,
+    "title": "lkblkjb",
+    "content": "vjm., ,- -.",
+    "author": "k.n.,m n"
+  }
+]

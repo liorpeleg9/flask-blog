@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ post.title }}</title>
+</head>
+<body>
+  <a href="/">← Back</a>
+
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.content }}</p>
+
+  {% if post.author %}
+    <p><em>By {{ post.author }}</em></p>
+  {% endif %}
+</body>
+</html>
