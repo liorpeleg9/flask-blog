@@ -89,6 +89,22 @@ def post_detail(post_id: int) -> str:
 
     return render_template("post.html", post=post)
 
+@app.route("/delete/<int:post_id>")
+def delete(post_id: int):
+    """
+    Delete a blog post by id and redirect to the homepage.
+
+    Args:
+        post_id: The numeric id of the post to delete.
+
+    Returns:
+        A redirect to the index page.
+    """
+    posts = load_posts()
+    updated_posts = [p for p in posts if p.get("id") != post_id]
+    save_posts(updated_posts)
+    return redirect(url_for("index"))
+
 
 @app.route("/add", methods=["GET", "POST"])
 def add() -> str:
